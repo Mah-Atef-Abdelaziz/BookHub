@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const authorList = document.getElementById('author-list');
 
     try {
+        // Fetch books data
         const booksResponse = await fetch('/books');
         const books = await booksResponse.json();
         books.forEach(book => {
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             bookList.appendChild(li);
         });
 
+        // Fetch authors data
         const authorsResponse = await fetch('/authors');
         const authors = await authorsResponse.json();
         authors.forEach(author => {

@@ -1,24 +1,24 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import connectiontDB from './db/connection.js';
+import connectionDB from './db/connection.js';
+import AuthorRouter from './src/modules/author/author.routes.js'; // Author routes
+import BookRouter from './src/modules/book/book.routes.js'; // Book routes
 
-import AuthorRouter from './modules/author/author.routes.js';
-import bookRouter from './modules/book/book.routes.js';
-dotenv.config();
+dotenv.config(); // Load environment variables
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Connect to the database
-connectiontDB();
+connectionDB();
 
 // Middleware
-app.use(express.json());
+app.use(express.json()); // For parsing JSON
 app.use(express.static('public')); // Serve static files
 
 // Routes
-app.use("/authors", AuthorRouter);
-app.use("/books", bookRouter);
+app.use("/authors", AuthorRouter); // Register author routes
+app.use("/books", BookRouter); // Register book routes
 
 // 404 Handler
 app.use('*', (req, res) => {

@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,6 +7,7 @@ body {
     color: #333;
 }
 
+/* Header Styles */
 header {
     background-color: #4CAF50;
     color: white;
@@ -13,20 +15,26 @@ header {
     padding: 1rem 0;
 }
 
+/* Main Content Styles */
 main {
     padding: 2rem;
+    margin-bottom: 100px;
+    /* Added space for footer */
 }
 
+/* Heading Styles */
 h1,
 h2 {
     font-family: 'Arial Black', sans-serif;
 }
 
+/* Books and Authors Section */
 #books,
 #authors {
     margin-bottom: 2rem;
 }
 
+/* List Styles */
 ul {
     list-style-type: none;
     padding: 0;
@@ -37,4 +45,31 @@ li {
     margin: 0.5rem 0;
     padding: 0.5rem;
     border-radius: 5px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Make the layout responsive */
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+
+    h1,
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    li {
+        font-size: 1rem;
+    }
 }

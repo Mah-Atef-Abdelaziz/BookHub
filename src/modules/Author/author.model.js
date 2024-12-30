@@ -1,13 +1,22 @@
-import { Schema, model } from "mongoose";
+import mongoose from 'mongoose';
 
-// Defining the Author schema with fields: name, bio, birthDate, and books (reference to Book model)
-const authorSchema = new Schema({
-    name: { type: String, required: true },
-    bio: { type: String },
-    birthDate: { type: Date },
-    books: [{ type: Schema.Types.ObjectId, ref: 'Book' }]  // Reference to the books written by the author
-}, { timestamps: true });  // Enables automatic createdAt and updatedAt fields
+// Author schema definition
+const authorSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    bio: {
+        type: String,
+        required: true
+    },
+    books: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Book'
+    }]
+}, { timestamps: true });
 
-const Author = model('Author', authorSchema);
+// Author model based on the schema
+const Author = mongoose.model('Author', authorSchema);
 
 export default Author;

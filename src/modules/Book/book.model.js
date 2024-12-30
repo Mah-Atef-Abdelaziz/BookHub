@@ -1,13 +1,26 @@
-import { Schema, model } from "mongoose";
+import mongoose from 'mongoose';
 
-// Defining the Book schema with fields: title, content, author (reference to Author model), and publishedDate
-const bookSchema = new Schema({
-    title: { type: String, required: true },
-    content: { type: String, required: true },
-    author: { type: Schema.Types.ObjectId, ref: 'Author', required: true },  // Reference to the Author who wrote the book
-    publishedDate: { type: Date, default: Date.now }
-});
+// Define the schema for the book
+const bookSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    genre: {
+        type: String,
+        required: true
+    },
+    publishedDate: {
+        type: Date,
+        required: true
+    }
+}, { timestamps: true }); // Adding timestamps for createdAt and updatedAt
 
-const Book = model('Book', bookSchema);
+// Create the Book model based on the schema
+const Book = mongoose.model('Book', bookSchema);
 
 export default Book;

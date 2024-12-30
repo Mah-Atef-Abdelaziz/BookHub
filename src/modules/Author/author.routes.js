@@ -1,6 +1,7 @@
 import { Router } from "express";
-const router = Router();
 import * as BC from "./author.controller.js"; // Importing controller functions
+
+const router = Router();
 
 // Pagination: Fetch authors with pagination support
 router.get("/pagination", BC.pagination);
