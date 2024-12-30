@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import connectionDB from './db/connection.js';
-import AuthorRouter from './src/modules/author/author.routes.js'; // Author routes
-import BookRouter from './src/modules/book/book.routes.js'; // Book routes
+import AuthorRouter from './modules/author/author.routes.js'; // Author routes
+import BookRouter from './modules/book/book.routes.js'; // Book routes
 
 dotenv.config(); // Load environment variables
 
