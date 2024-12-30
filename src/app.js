@@ -1,9 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import connectiontDB from './db/connection.js';
-import AuthorRouter from './src/modules/author/author.routes.js';
-import bookRouter from './src/modules/book/book.routes.js';
 
+import AuthorRouter from './modules/author/author.routes.js';
+import bookRouter from './modules/book/book.routes.js';
 dotenv.config();
 
 const app = express();

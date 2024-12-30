@@ -1,19 +1,20 @@
 // Importing the Book and Author models for database operations
-import Book from "../../../db/models/book.model.js";
-import Author from "../../../db/models/author.model.js";
+
+import Book from "../../modules/book/book.model.js";
+import Author from "../../modules/author/author.model.js";
 
 // POST request to create a new book
 export const createBook = async (req, res) => {
     const { title, content, authorId, publishedDate } = req.body;
     try {
-        const author = await Author.findById(authorId); 
+        const author = await Author.findById(authorId);
         if (!author) {
             return res.status(404).json({ msg: "Author not found" });
         }
 
         const newBook = await Book.create({ title, content, author: authorId, publishedDate });
         author.books.push(newBook._id);
-        await author.save(); 
+        await author.save();
 
         res.status(201).json(newBook);
     } catch (error) {
@@ -51,11 +52,11 @@ export const getBookByID = async (req, res) => {
 // PATCH request to update a book by ID
 export const updateBook = async (req, res) => {
     const { id } = req.params;  // Get the book ID from the URL params
-    const updateData = req.body; 
+    const updateData = req.body;
     try {
         const updatedBook = await Book.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
         if (!updatedBook) {
-            return res.status(404).json({ msg: "Book not found" }); 
+            return res.status(404).json({ msg: "Book not found" });
         }
         res.status(200).json({ msg: "done", book: updatedBook });  // Return the updated book in the response
     } catch (error) {
@@ -70,9 +71,9 @@ export const DeleteBook = async (req, res) => {
     try {
         const deletedBook = await Book.findByIdAndDelete(id);
         if (!deletedBook) {
-            return res.status(404).json({ msg: "Book not found" });  
+            return res.status(404).json({ msg: "Book not found" });
         }
-        res.status(200).json({ msg: "done", book: deletedBook }); 
+        res.status(200).json({ msg: "done", book: deletedBook });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });

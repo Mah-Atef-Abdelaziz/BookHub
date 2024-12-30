@@ -1,5 +1,4 @@
-import Author from "../../../db/models/author.model.js";
-
+import Author from "../../modules/author/author.model.js";
 // POST request to create a new author
 export const createAuthor = async (req, res) => {
     const { name, bio, birthDate } = req.body;  // Destructure data from the request body
